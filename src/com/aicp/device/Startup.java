@@ -73,6 +73,9 @@ public class Startup extends BroadcastReceiver {
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_DT2W_SWITCH, false);
             Settings.System.putInt(resolver, DoubleTapToWakeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
+            enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_S2S_SWITCH, false);
+            Settings.System.putInt(resolver, SweepToSleepSwitch.SETTINGS_KEY, enabled ? 1 : 0);
+
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_S2W_SWITCH, false);
             Settings.System.putInt(resolver, SweepToWakeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
@@ -220,6 +223,9 @@ public class Startup extends BroadcastReceiver {
 
         enabled = Settings.System.getInt(resolver, DoubleTapToWakeSwitch.SETTINGS_KEY, 0) != 0;
         restore(DoubleTapToWakeSwitch.getFile(context), enabled);
+
+        enabled = Settings.System.getInt(resolver, SweepToSleepSwitch.SETTINGS_KEY, 0) != 0;
+        restore(SweepToSleepSwitch.getFile(context), enabled);
 
         enabled = Settings.System.getInt(resolver, SweepToWakeSwitch.SETTINGS_KEY, 0) != 0;
         restore(SweepToWakeSwitch.getFile(context), enabled);

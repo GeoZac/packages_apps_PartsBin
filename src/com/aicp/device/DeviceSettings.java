@@ -85,6 +85,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_HWK_SWITCH = "hwk";
     public static final String KEY_STAP_SWITCH = "single_tap";
     public static final String KEY_DT2W_SWITCH = "double_tap_to_wake";
+    public static final String KEY_S2S_SWITCH = "sweep_to_sleep";
     public static final String KEY_S2W_SWITCH = "sweep_to_wake";
     public static final String KEY_FASTCHARGE_SWITCH = "fastcharge";
     public static final String KEY_REFRESH_RATE = "refresh_rate";
@@ -116,6 +117,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static TwoStatePreference mSTapSwitch;
     private static TwoStatePreference mFastChargeSwitch;
     private static TwoStatePreference mDoubleTapToWakeSwitch;
+    private static TwoStatePreference mSweepToSleepSwitch;
     private static TwoStatePreference mSweepToWakeSwitch;
     private static TwoStatePreference mRefreshRate;
     private static TwoStatePreference mAutoRefreshRate;
@@ -199,6 +201,15 @@ public class DeviceSettings extends PreferenceFragment implements
             gesturesCategory.removePreference(mDoubleTapToWakeSwitch);
             gesturesRemoved += 1;
         }
+        mSweepToSleepSwitch = (TwoStatePreference) findPreference(KEY_S2S_SWITCH);
+        if (mSweepToSleepSwitch != null && SweepToSleepSwitch.isSupported(getContext())){
+            mSweepToSleepSwitch.setEnabled(true);
+            mSweepToSleepSwitch.setChecked(SweepToSleepSwitch.isCurrentlyEnabled(getContext()));
+            mSweepToSleepSwitch.setOnPreferenceChangeListener(new SweepToSleepSwitch(getContext()));
+        } else {
+            gesturesCategory.removePreference(mSweepToSleepSwitch);
+            gesturesRemoved += 1;
+        }
         mSweepToWakeSwitch = (TwoStatePreference) findPreference(KEY_S2W_SWITCH);
         if (mSweepToWakeSwitch != null && SweepToWakeSwitch.isSupported(getContext())){
             mSweepToWakeSwitch.setEnabled(true);
@@ -212,7 +223,7 @@ public class DeviceSettings extends PreferenceFragment implements
             mOffScreenGestures.getParent().removePreference(mOffScreenGestures);
             gesturesRemoved += 1;
         }
-        if (gesturesRemoved == 4) gesturesCategory.getParent().removePreference(gesturesCategory);
+        if (gesturesRemoved == 5) gesturesCategory.getParent().removePreference(gesturesCategory);
 
         PreferenceCategory graphicsCategory = (PreferenceCategory) findPreference(KEY_GRAPHICS_CATEGORY);
         mPanelSettings = (Preference) findPreference(KEY_PANEL_SETTINGS);

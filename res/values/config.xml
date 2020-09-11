@@ -44,6 +44,9 @@
     <!-- Path to devices sweep to wake toggle file -->
     <string name="pathSweepToWakeToggle"></string>
 
+    <!-- Path to devices sweep to sleep toggle file -->
+    <string name="pathSweepToSleepToggle"></string>
+
     <!-- Path to devices High Brigness Mode toggle file -->
     <!-- Example values are "0" for off and "1! for on -->
     <string name="pathHBMModeToggle"></string>
