@@ -5,6 +5,7 @@
 
 ### Currently supported devices:
 
+  * Google Nexus 5: Hammerhead
   * OnePlus 5:      cheeseburger
   * OnePlus 5T:     dumpling
   * OnePlus 6:      enchilada
@@ -38,6 +39,8 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 	Doubletap to wake (DT2W): En-/disable waking up the display by tapping on it two times.
 
 	Sweep to wake (S2W): En-/disable waking up the display by swiping from left to right in the lower section.
+
+	Sweep to sleep (S2S): En-/disable to put the display to sleep by swiping from left to right in the lower section.
 
 	SoundTuner: En-/disable the proprietary SoundTuner (OnePlus specific)
 
@@ -114,6 +117,9 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 
 `<!-- Path to devices doubletap to wake toggle file -->`<br />
 `<string name="pathDoubleTapToWakeToggle"> </string>`<br />
+
+`<!-- Path to devices sweep to sleep toggle file -->`<br />
+`<string name="pathSweepToSleepToggle"> </string>`<br />
 
 `<!-- Path to devices sweep to wake toggle file -->`<br />
 `<string name="pathSweepToWakeToggle"> </string>`<br />
