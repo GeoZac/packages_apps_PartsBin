@@ -59,6 +59,9 @@
     <!-- Path to devices SRGBMode toggle file -->
     <string name="pathSRGBModeToggle"></string>
 
+    <!-- Path to devices AdobeRGBMode toggle file -->
+    <string name="pathAdobeRGBModeToggle"></string>
+
     <!-- Path to devices DCIMode toggle file -->
     <string name="pathDCIModeToggle"></string>
 

@@ -74,6 +74,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_SPEAKER_GAIN = "speaker_gain";
 
     public static final String KEY_SRGB_SWITCH = "srgb";
+    public static final String KEY_ADOBERGB_SWITCH = "adobe_rgb";
     public static final String KEY_HBM_SWITCH = "hbm";
     public static final String KEY_PROXI_SWITCH = "proxi";
     public static final String KEY_DCD_SWITCH = "dcd";

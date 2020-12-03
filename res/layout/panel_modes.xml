@@ -66,6 +66,15 @@ limitations under the License
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioButton
+                android:id="@+id/adobergb_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:attr/listPreferredItemHeight"
+                android:gravity="center_vertical"
+                android:text="@string/adobergb_mode_title"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
                 android:id="@+id/dci_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

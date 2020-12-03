@@ -61,6 +61,9 @@ public class Startup extends BroadcastReceiver {
             boolean enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_SRGB_SWITCH, false);
             Settings.System.putInt(resolver, SRGBModeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
+            enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_ADOBERGB_SWITCH, false);
+            Settings.System.putInt(resolver, AdobeRGBModeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
+
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_HBM_SWITCH, false);
             Settings.System.putInt(resolver, HBMModeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
@@ -196,6 +199,9 @@ public class Startup extends BroadcastReceiver {
 
         enabled = Settings.System.getInt(resolver, SRGBModeSwitch.SETTINGS_KEY, 0) != 0;
         restore(SRGBModeSwitch.getFile(context), enabled);
+
+        enabled = Settings.System.getInt(resolver, AdobeRGBModeSwitch.SETTINGS_KEY, 0) != 0;
+        restore(AdobeRGBModeSwitch.getFile(context), enabled);
 
         enabled = Settings.System.getInt(resolver, DCDModeSwitch.SETTINGS_KEY, 0) != 0;
         restore(DCDModeSwitch.getFile(context), enabled);

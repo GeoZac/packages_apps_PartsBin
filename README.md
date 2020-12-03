@@ -48,7 +48,7 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 
 	DCDSwitch: DC-Dimming toggle with additional QS tile
 
-	Displaypanel Color Modes: sRGB, DCI-P3, WideColor, OnePlus, Nightmode. With additional QS tile
+	Displaypanel Color Modes: sRGB, Adobe RGB, DCI-P3, WideColor, OnePlus, Nightmode. With additional QS tile
 
 	Display Refreshrate: Automatic, Manual (60Hz, 90Hz) with additional QS tile
 	[Note: Requires setting the kernel node for "dynamic_fps" and a few other bools.]
@@ -134,6 +134,9 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 
 `<!-- Path to devices SRGBMode toggle file -->`<br />
 `<string name="pathSRGBModeToggle"> </string>`<br />
+
+`<!-- Path to devices AdobeRGB toggle file -->`<br />
+`<string name="pathAdobeRGBModeToggle"> </string>`<br />
 
 `<!-- Path to devices DCI-P3 Mode toggle file -->`<br />
 `<string name="pathDCIModeToggle"> </string>`<br />
