@@ -158,9 +158,9 @@ public class PanelSettings extends PreferenceFragment implements RadioGroup.OnCh
 
     private void updateRadioButtonState(RadioButton button, boolean isSupported) {
         if (isSupported) {
-            button.setEnabled(true);
+            button.setVisibility(View.VISIBLE);
         } else {
-            button.setEnabled(false);
+            button.setVisibility(View.GONE);
         }
     }
 }
