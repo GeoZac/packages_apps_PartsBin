@@ -218,9 +218,6 @@ public class Startup extends BroadcastReceiver {
         enabled = Settings.System.getInt(resolver, NightModeSwitch.SETTINGS_KEY, 0) != 0;
         restore(NightModeSwitch.getFile(context), enabled);
 
-        enabled = Settings.System.getInt(resolver, SingleTapSwitch.SETTINGS_KEY, 0) != 0;
-        restore(SingleTapSwitch.getFile(context), enabled);
-
         enabled = Settings.System.getInt(resolver, FastChargeSwitch.SETTINGS_KEY, 0) != 0;
         restore(FastChargeSwitch.getFile(context), enabled);
 
