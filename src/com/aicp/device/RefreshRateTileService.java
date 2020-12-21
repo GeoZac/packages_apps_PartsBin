@@ -31,6 +31,8 @@ import androidx.preference.PreferenceManager;
 public class RefreshRateTileService extends TileService {
     private boolean enabled = false;
     private boolean autoRefreshEnabled;
+    protected static float mBaseRefresh;
+    protected static float mPeakRefresh;
 
     @Override
     public void onDestroy() {
@@ -50,6 +52,8 @@ public class RefreshRateTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
+        mBaseRefresh = (float) this.getResources().getInteger(R.integer.BaseRefresh);
+        mPeakRefresh = (float) this.getResources().getInteger(R.integer.PeakRefresh);
         autoRefreshEnabled = Settings.System.getInt(this.getContentResolver(),
                 AutoRefreshRateSwitch.SETTINGS_KEY, 1) == 1;
         if (autoRefreshEnabled) {
@@ -59,7 +63,7 @@ public class RefreshRateTileService extends TileService {
             RefreshRateSwitch.setPeakRefresh(this, enabled);
 
             getQsTile().setIcon(Icon.createWithResource(this,
-                    enabled ? R.drawable.ic_refresh_tile_90 : R.drawable.ic_refresh_tile_60));
+                    enabled ? R.drawable.ic_refresh_tile_peak : R.drawable.ic_refresh_tile_base));
             getQsTile().setState(enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE);
         }
         getQsTile().updateTile();
@@ -79,11 +83,11 @@ public class RefreshRateTileService extends TileService {
             RefreshRateSwitch.setPeakRefresh(this, enabled);
             sharedPrefs.edit().putBoolean(DeviceSettings.KEY_REFRESH_RATE, enabled ? false : true).commit();
             Settings.System.putFloat(this.getContentResolver(),
-                    Settings.System.PEAK_REFRESH_RATE, enabled ? 60f : 90f);
+                    Settings.System.PEAK_REFRESH_RATE, enabled ? mBaseRefresh : mPeakRefresh);
             Settings.System.putFloat(this.getContentResolver(),
-                    Settings.System.MIN_REFRESH_RATE, enabled ? 60f : 90f);
+                    Settings.System.MIN_REFRESH_RATE, enabled ? mBaseRefresh : mPeakRefresh);
             getQsTile().setIcon(Icon.createWithResource(this,
-                    enabled ? R.drawable.ic_refresh_tile_60 : R.drawable.ic_refresh_tile_90));
+                    enabled ? R.drawable.ic_refresh_tile_base : R.drawable.ic_refresh_tile_peak));
             getQsTile().setState(enabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
             getQsTile().updateTile();
         }

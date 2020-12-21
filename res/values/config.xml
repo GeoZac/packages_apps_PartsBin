@@ -20,6 +20,8 @@
     <bool name="config_device_has_hw_nav_buttons">false</bool>
 
     <bool name="config_device_supports_switch_refreshrate">false</bool>
+    <integer name="BaseRefresh"></integer>
+    <integer name="PeakRefresh"></integer>
 
     <bool name="config_device_supports_soundtuner">false</bool>
 

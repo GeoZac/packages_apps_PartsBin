@@ -28,9 +28,13 @@ public class AutoRefreshRateSwitch implements OnPreferenceChangeListener {
     public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_AUTO_REFRESH_RATE;
 
     private Context mContext;
+    protected static float mBaseRefresh;
+    protected static float mPeakRefresh;
 
     public AutoRefreshRateSwitch(Context context) {
         mContext = context;
+        mBaseRefresh = (float) context.getResources().getInteger(R.integer.BaseRefresh);
+        mPeakRefresh = (float) context.getResources().getInteger(R.integer.PeakRefresh);
     }
 
     public static boolean isCurrentlyEnabled(Context context) {
@@ -41,9 +45,9 @@ public class AutoRefreshRateSwitch implements OnPreferenceChangeListener {
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Boolean enabled = (Boolean) newValue;
         Settings.System.putFloat(mContext.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, 90f);
+                Settings.System.PEAK_REFRESH_RATE, mPeakRefresh);
         Settings.System.putFloat(mContext.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, 60f);
+                Settings.System.MIN_REFRESH_RATE, mBaseRefresh);
         Settings.System.putInt(mContext.getContentResolver(), SETTINGS_KEY, enabled ? 1 : 0);
         return true;
     }

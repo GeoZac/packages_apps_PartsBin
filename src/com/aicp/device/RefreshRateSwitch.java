@@ -28,30 +28,34 @@ public class RefreshRateSwitch implements OnPreferenceChangeListener {
     public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_REFRESH_RATE;
 
     private Context mContext;
+    protected static float mBaseRefresh;
+    protected static float mPeakRefresh;
 
     public RefreshRateSwitch(Context context) {
         mContext = context;
+        mBaseRefresh = (float) context.getResources().getInteger(R.integer.BaseRefresh);
+        mPeakRefresh = (float) context.getResources().getInteger(R.integer.PeakRefresh);
     }
 
     public static boolean isCurrentlyEnabled(Context context) {
         return Settings.System.getFloat(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, 90f) == 90f;
+                Settings.System.PEAK_REFRESH_RATE, mPeakRefresh) == mPeakRefresh;
     }
 
     public static void setPeakRefresh (Context context, boolean enabled) {
         Settings.System.putFloat(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
+                Settings.System.PEAK_REFRESH_RATE, enabled ? mPeakRefresh : mBaseRefresh);
         Settings.System.putFloat(context.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, enabled ? 90f : 60f);
+                Settings.System.MIN_REFRESH_RATE, enabled ? mPeakRefresh : mBaseRefresh);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Boolean enabled = (Boolean) newValue;
         Settings.System.putFloat(mContext.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
+                Settings.System.PEAK_REFRESH_RATE, enabled ? mPeakRefresh : mBaseRefresh);
         Settings.System.putFloat(mContext.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, enabled ? 90f : 60f);
+                Settings.System.MIN_REFRESH_RATE, enabled ? mPeakRefresh : mBaseRefresh);
         return true;
     }
 }
