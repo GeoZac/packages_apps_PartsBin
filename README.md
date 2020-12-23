@@ -50,7 +50,7 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 
 	Displaypanel Color Modes: sRGB, Adobe RGB, DCI-P3, WideColor, OnePlus, Nightmode. With additional QS tile
 
-	Display Refreshrate: Automatic, Manual (60Hz, 90Hz) with additional QS tile
+	Display Refreshrate: Automatic, Manual, forced Peakrate with additional QS tile
 	[Note: Requires setting the kernel node for "dynamic_fps" and a few other bools.]
 
 	Vibration Modes: System, Calls, Notifications
@@ -92,10 +92,14 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 `<bool name="config_device_supports_gestures"> </bool>`<br />
 
 `<!-- Whether the device supports the prebuilt SoundTuner (true/false) -->`<br />
-`<bool name="config_device_supports_soundtuner"> </bool>`<br />
+`<bool name="config_device_supports_soundtuner">false</bool>`<br />
 
 `<!-- Whether device supports switching display refreshrates (true/false) -->`<br />
-`<bool name="config_device_supports_switch_refreshrate"> </bool>`<br />
+`<bool name="config_device_supports_switch_refreshrate">false</bool>`<br />
+`<!-- Integer value of the minimal/base display refreshrate (usually 60) -->`<br />
+`<integer name="BaseRefresh">60</integer>`<br />
+`<!-- Integer value of the maximum/peak display refreshrate (e.g. 90) -->`<br />
+`<integer name="PeakRefresh"> </integer>`<br />
 
 `<!-- Show/hide the QS tile, if device supports DC Dimming or not. Default value is false. -->`<br />
 `<bool name="enableDCDTile">false</bool>`<br />
