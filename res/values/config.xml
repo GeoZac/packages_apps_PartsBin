@@ -23,8 +23,6 @@
     <integer name="BaseRefresh"></integer>
     <integer name="PeakRefresh"></integer>
 
-    <bool name="config_device_supports_soundtuner">false</bool>
-
     <!-- Whether device supports offscreen gestures -->
     <bool name="config_device_supports_gestures">true</bool>
 

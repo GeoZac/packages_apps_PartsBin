@@ -14,10 +14,12 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aicpextras="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
+    <com.aicp.gear.preference.SelfRemovingPreferenceCategory
         android:key="category_audio"
+        aicpextras:requiresPackageEnabled="com.dolby.daxservice"
         android:title="@string/category_audio">
         <SwitchPreference
             android:key="enable_dolby_atmos"
@@ -26,21 +28,22 @@
             android:summary="@string/enable_sound_summary"
             android:defaultValue="true"
             android:persistent="true" />
-        <Preference
+        <com.aicp.gear.preference.SelfRemovingPreference
             android:key="dolby_atmos"
             android:title="@string/sound_title"
             android:summary="@string/sound_summary"
             android:dependency="enable_dolby_atmos"
+            aicpextras:requiresPackageEnabled="com.oneplus.sound.tuner"
             android:persistent="false" >
             <intent
                  android:targetPackage="com.oneplus.sound.tuner"
                  android:targetClass="com.oneplus.sound.tuner.panoramic.DolbyPanoramicSoundActivity" />
-        </Preference>
+        </com.aicp.gear.preference.SelfRemovingPreference>
         <Preference
             android:icon="@drawable/ic_info"
             android:persistent="false"
             android:summary="@string/enable_sound_info" />
-    </PreferenceCategory>
+    </com.aicp.gear.preference.SelfRemovingPreferenceCategory>
 
     <PreferenceCategory
         android:key="category_graphics"
