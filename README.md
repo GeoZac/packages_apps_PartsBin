@@ -16,7 +16,7 @@
   * OnePlus 8:      instantnoodle
   * OnePlus 8 Pro:  instantnoodlep
   * OnePlus 8T:     kebab
- 
+
 ### Description
 
 Based on OMNIROMs DeviceParts package, the idea is to manage device specific
@@ -46,6 +46,7 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 	Sweep to sleep (S2S): En-/disable to put the display to sleep by swiping from left to right in the lower section.
 
 	SoundTuner: En-/disable the proprietary SoundTuner (OnePlus specific)
+	[Note: Requires the needed vendor packages. Automatically appears when packages are correctly installed.]
 
 	HBMSwitch: High Brightness Mode toggle with configurable off-on values with additional QS tile
 
@@ -93,9 +94,6 @@ _Note that defining paths needs support in the kernel! Thus the features might n
 
 `<!-- Whether the device supports offscreen-gestures (true/false) -->`<br />
 `<bool name="config_device_supports_gestures"> </bool>`<br />
-
-`<!-- Whether the device supports the prebuilt SoundTuner (true/false) -->`<br />
-`<bool name="config_device_supports_soundtuner">false</bool>`<br />
 
 `<!-- Whether device supports switching display refreshrates (true/false) -->`<br />
 `<bool name="config_device_supports_switch_refreshrate">false</bool>`<br />
